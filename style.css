@@ -1,0 +1,220 @@
+/* GENERAL STYLING */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    font-family: 'Poppins', sans-serif;
+    height: 100%;
+    width: 100%;
+    -webkit-tap-highlight-color: transparent;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+/* DESKTOP NAV */
+.logo{
+    width: 175px;
+}
+
+nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 0;
+    margin: 0.5rem 2rem;
+    /* border: 2px solid rgb(12, 10, 121); */
+}
+
+button{
+    border: 0;
+    outline: 0;
+    background: rgb(12, 163, 12);
+    color: rgb(255, 255, 255);
+    padding: 7px 20px;
+    font-size: 15px;
+    font-weight: 500;
+    border-radius: 2.5rem;
+    height: 40px;
+    margin-left: 1rem;
+}
+
+.language-btn{
+    display: inline-flex;
+    align-items: center;
+    background: transparent;
+    border: 1px solid rgb(255, 255, 255);
+    /* color: rgb(12, 163, 12);; */
+    padding: 7px 15px;
+}
+
+.language-btn img{
+    width: 10px;
+    margin-left: 10px;
+}
+
+/* COVER */
+
+section{
+    position: relative;
+    display: flex;
+    align-items: center;
+    /* padding: 4vh;
+    height: 80vh; */
+    /* margin: 0 0; */
+    box-sizing: border-box;
+    min-height: 400px;
+    padding: 60px;
+}
+
+
+#cover{
+    /* position: relative; */
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    /* border: 2px solid rgb(12, 10, 121); */
+
+
+}
+
+.cover-text{
+    align-self: center;
+    margin-top: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    /* border: 2px solid rgb(12, 10, 121); */
+    height: 50vh;
+    width: 20rem;
+    /* ackground-color: red; */
+    
+}
+
+
+.food-circle{
+    z-index: -1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform-origin: top right;
+    transform: translateY(-65%);
+    margin-right: 9%;
+    width: 60rem;
+    height: 60rem;
+
+    /* aspect-ratio: 1/1; */
+
+  
+    border-radius: 0 0 100% 100%;
+    box-shadow: inset 0px 0px 60px 20px rgba(0, 0, 0, 0.3);
+
+    clip-path: circle(50%);
+    background-color: rgb(12, 163, 12);
+}
+
+.food-circle li{
+    position: absolute;
+    left: 85px;
+    list-style: none;
+    transform-origin: 24rem;
+    transform: rotate(calc(360deg/8  * var(--i)));
+    animation: rotate 30s linear infinite;
+    
+}
+
+.toggle{
+    position: absolute;
+    z-index: 1000;
+    width: 60px;
+    height: 60px;
+    /* background: white; */
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.food-img{
+    animation: rotate-self 30s linear infinite ;
+    
+}
+
+.animated-image {
+    position: absolute;
+    opacity: 0;
+  }
+
+
+
+
+  /* NEW SECTION: PRUEBA */
+
+    #one{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: space-evenly;
+        margin: 8rem 0;
+        /* background-color: aqua; */
+    }
+    
+  .spacer{
+    position: absolute;
+    aspect-ratio: 960/540;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    z-index: 0;
+  }
+
+  .layer1{
+    background-image: url(./assets/layered-waves-haikei.svg);
+  }
+
+ .flip{
+    transform: rotate(180deg);
+ }
+
+  /* ANIMATIONS */
+@keyframes rotate{
+    from {
+        transform: rotate(calc(360deg /8 * var(--i)));
+    }to{
+        transform: rotate(calc(-360deg + 360deg/8 * var(--i)));
+    }
+}
+
+@keyframes rotate-self{
+    from {
+        transform: rotate(0deg);
+    }to{
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes imageTransition {
+    0% {
+      opacity: 0;
+      transform: scale(0);
+    }
+    20% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+      }
+  }
