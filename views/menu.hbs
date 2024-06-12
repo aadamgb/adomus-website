@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="/style/menu.css">
+    <title>Menu</title>
+
+</head>
+<body>
+
+            {{#each days}}
+            {{this.orderDate}}
+            {{this.orderedDay}}
+        {{/each}}
+
+  <nav class="myNav">
+    <div class="container">
+        <img src="./assets/LogoV2.svg" class="logo" alt="logo">
+        <ul class="nav-links">
+            <li><a href="./calendar">Calendar</a></li>
+            <li><a href="#experience">Dashboard</a></li>
+            <li><a href="#projects">Profile</a></li>
+            <li><a href="/auth/logout">Log Out</a></li>
+        </ul>
+    </div>
+  </nav>
+    <div class="day-container">
+        
+        {{!-- <h1>Hello {{user.username}}!!  <br> --}}
+         <h1>Hello {{user.username}}!! Choose your food for the </h1> 
+         <h1 class="date">{{days.orderWeek}}</h1>
+         <h1 >{{days.orderDay}} of {{days.orderMonth}}</h1>
+    {{!-- The current date is  {{days.orderedDate}} --}}
+    
+    </div>
+    {{!-- <div class="spacer layer1 flip"></div> --}}
+    <div class="first-dish">
+        <div class="header-top header-top1"><h4>Breakfast</h4></div>
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+
+                <div class="swiper-slide">
+                    <img src="./assets/Slider-food/tranding-food-8.png" alt="Tranding">
+                </div>
+
+                <div class="swiper-slide">
+                   <img src="./assets/Slider-food/tranding-food-7.png" alt="Tranding">
+                    <span class="caption"><p>{{products.ProductID}}</p></span>
+                </div>
+
+                <div class="swiper-slide">
+                    <img src="./assets/Food-images/Breakfast/b-3.jpg" alt="Tranding">
+                </div>
+
+                <div class="swiper-slide">
+                    <img src="./assets/Food-images/Breakfast/b-4.jpg" alt="Tranding">
+                    <span class="caption"><p>Toast Eggs</p></span>                    
+                </div>
+
+                <div class="swiper-slide">
+                    <img src="./assets/Food-images/Breakfast/b-5.jpg" alt="Tranding">
+                </div>
+
+                <div class="swiper-slide">
+                    <img src="./assets/Food-images/Breakfast/b-2.jpg" alt="Tranding">
+                </div>
+
+                <div class="swiper-slide">
+                    <img src="./assets/Food-images/Breakfast/b-7.jpg" alt="Tranding">
+                    <span class="caption"><p>{{products.ProductID}}</p></span>
+                </div>
+
+                <div class="swiper-slide">
+                    <img src="./assets/Slider-food/tranding-food-2.png" alt="Tranding">
+                </div>
+
+                <div class="swiper-slide">
+                    <img src="./assets/Slider-food/tranding-food-1.png" alt="Tranding">
+                    <span class="caption"><p>Pizza</p></span>                    
+                </div>
+
+                <div class="swiper-slide">
+                    <img src="./assets/Slider-food/tranding-food-2.png" alt="Tranding">
+                </div>
+
+                <div class="swiper-slide">
+                    <img src="./assets/Slider-food/tranding-food-3.png" alt="Tranding">
+                </div>
+
+                <div class="swiper-slide">
+                    <img src="./assets/Slider-food/tranding-food-4.png" alt="Tranding">
+                </div>
+                {{!-- <div class="swiper-slide"><img src="./assets/Slider-food/tranding-food-5.png" alt="Tranding"></div>
+                <div class="swiper-slide"><img src="./assets/Slider-food/tranding-food-7.png" alt="Tranding"></div>
+                <div class="swiper-slide"><img src="./assets/Slider-food/tranding-food-1.png" alt="Tranding"></div> --}}
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-pagination"></div>
+        </div>
+        {{!-- <div class="header-bottom"></div> --}}
+    </div>
+
+    <section class="first-dish">
+        <div class="header-top">Second Dishes</div>
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide"><img src="./assets/Slider-food/tranding-food-1.png" alt="Tranding"></div>
+                <div class="swiper-slide"><img src="./assets/Slider-food/tranding-food-2.png" alt="Tranding"></div>
+                <div class="swiper-slide"><img src="./assets/Slider-food/tranding-food-3.png" alt="Tranding"></div>
+                <div class="swiper-slide"><img src="./assets/Slider-food/tranding-food-4.png" alt="Tranding"></div>
+                <div class="swiper-slide"><img src="./assets/Slider-food/tranding-food-5.png" alt="Tranding"></div>
+                <div class="swiper-slide"><img src="./assets/Slider-food/tranding-food-6.png" alt="Tranding"></div>
+                <div class="swiper-slide"><img src="./assets/Slider-food/tranding-food-7.png" alt="Tranding"></div>
+                <div class="swiper-slide"><img src="./assets/Slider-food/tranding-food-1.png" alt="Tranding"></div>
+                <div class="swiper-slide"><img src="./assets/Slider-food/tranding-food-2.png" alt="Tranding"></div>
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </section>
+
+    <section class="first-dish">
+        <div class="header-top">Second Dishes</div>
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide"><img src="./assets/Slider-food/tranding-food-1.png" alt="Tranding"></div>
+                <div class="swiper-slide"><img src="./assets/Slider-food/tranding-food-2.png" alt="Tranding"></div>
+                <div class="swiper-slide"><img src="./assets/Slider-food/tranding-food-3.png" alt="Tranding"></div>
+                <div class="swiper-slide"><img src="./assets/Slider-food/tranding-food-4.png" alt="Tranding"></div>
+                <div class="swiper-slide"><img src="./assets/Slider-food/tranding-food-5.png" alt="Tranding"></div>
+                <div class="swiper-slide"><img src="./assets/Slider-food/tranding-food-6.png" alt="Tranding"></div>
+                <div class="swiper-slide"><img src="./assets/Slider-food/tranding-food-7.png" alt="Tranding"></div>
+                <div class="swiper-slide"><img src="./assets/Slider-food/tranding-food-1.png" alt="Tranding"></div>
+                <div class="swiper-slide"><img src="./assets/Slider-food/tranding-food-2.png" alt="Tranding"></div>
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </section>
+
+    <section class="first-dish">
+        <div class="header-top">Second Dishes</div>
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide"><img src="./assets/Slider-food/tranding-food-1.png" alt="Tranding"></div>
+                <div class="swiper-slide"><img src="./assets/Slider-food/tranding-food-2.png" alt="Tranding"></div>
+                <div class="swiper-slide"><img src="./assets/Slider-food/tranding-food-3.png" alt="Tranding"></div>
+                <div class="swiper-slide"><img src="./assets/Slider-food/tranding-food-4.png" alt="Tranding"></div>
+                <div class="swiper-slide"><img src="./assets/Slider-food/tranding-food-5.png" alt="Tranding"></div>
+                <div class="swiper-slide"><img src="./assets/Slider-food/tranding-food-6.png" alt="Tranding"></div>
+                <div class="swiper-slide"><img src="./assets/Slider-food/tranding-food-7.png" alt="Tranding"></div>
+                <div class="swiper-slide"><img src="./assets/Slider-food/tranding-food-1.png" alt="Tranding"></div>
+                <div class="swiper-slide"><img src="./assets/Slider-food/tranding-food-2.png" alt="Tranding"></div>
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </section>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        var swiper = new Swiper(".mySwiper", {
+        slidesPerView: 6,
+        spaceBetween: 0,
+        slidesPerGroup: 3,
+        loop: true,
+        pagination: {
+            el: ".swiper-pagination",
+            type: "progressbar",
+            clickable: true,
+        },
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+        },
+        });
+
+
+        const navbar = document.querySelector('.myNav');
+        window.onscroll = () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('nav-active');
+            } else {
+                navbar.classList.remove('nav-active');
+            }
+        };
+    </script>
+</body>
+</html>

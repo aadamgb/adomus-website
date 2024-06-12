@@ -1,0 +1,18 @@
+@media screen and (max-width: 1200px) {
+    .container {
+        width: calc(100% - 30px);
+        max-width: 100%;
+    }
+}
+
+/* @media screen and (max-width: 768px) {
+    .signup-form, .signup-image, .signin-form, .signin-image {
+        width: auto;
+    }
+    .signup-form {
+        margin-left: 0;
+        margin-right: 0;
+        padding-left: 0;
+        padding: 0 30px;
+    }
+} */

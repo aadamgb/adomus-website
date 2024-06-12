@@ -1,0 +1,160 @@
+/* GENERAL STYLING */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+:root{
+    --bckcolor:  white;
+    --calendar-bck: green;
+    --calendar-text: white;
+}
+body{
+    font-family: 'Poppins', sans-serif;
+    max-height: fit-content;
+    width: 100%;
+    -webkit-tap-highlight-color: transparent;
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+    background-color: var(--bckcolor);
+}
+
+
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3rem;
+    gap: 8rem;
+    flex-wrap: wrap;
+}
+
+
+
+.text-container{
+    font-size: 2rem;
+}
+
+
+/* .calendar-container{
+    display: grid;
+    grid-template-rows: 10vh 10vh 10vh 10vh 10vh;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1 fr;
+} */
+/* Week Style */
+
+.week{
+    display: flex;
+    justify-content: space-around;
+    gap: 3rem;
+    height: 10vh;
+    width: 90vw;
+    padding: 20px 40px;
+    background-color: var(--calendar-bck);
+    border-radius: 1rem;
+}
+
+.week li{
+    list-style: none;
+    height: 80px;
+    width: 80px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    color: var(--calendar-text);
+    border-radius: 1rem;
+    font-size: 1.25rem;
+    margin-left: -1rem;
+}
+
+.blank{
+    margin-left: -2rem;
+    color: var(--calendar-bck);
+    background-color: #222327;
+}
+
+.week li.current{
+    position: relative;
+    background-color: #29fd53;
+    height: 80px;
+    width: 100px;
+    font-size: 1.65rem;
+    color: #222327;
+    border: 6px solid var(--bckcolor);
+    transform: translateY(-80px);
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.week li.current h1{
+    position: absolute;
+    font-size: 1.5rem;
+    color: #222327;
+    transform: translateY(70px);
+    cursor: pointer;
+}
+
+.week li.current h5{
+    position: absolute;
+    font-size: .6em;
+    color: #222327;
+    transform: translateY(95px);
+    cursor: pointer;
+    font-weight: 500;
+
+}
+.week li.current h3{
+    position: absolute;
+    font-size: .85em;
+    color: #222327;
+    transform: translateY(-65px);
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.week li.current::before{
+    content: '';
+    position: absolute;
+    top: 54px;
+    left: -36px;
+    width: 30px;
+    height: 20px;
+    background-color: var(--calendar-bck);
+    border-top-right-radius: 10px;
+    box-shadow: 6px -6px var(--bckcolor);
+}
+
+.week li.current::after{
+    content: '';
+    position: absolute;
+    top: 54px;
+    right: -36px;
+    width: 30px;
+    height: 20px;
+    background-color:var(--calendar-bck);
+    border-top-left-radius: 10px;
+    box-shadow: -6px -6px var(--bckcolor);
+}
+
+/* Breakfast Style */
+
+.breakfast-container{
+    grid-column: span 8;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    /* background-color: aqua; */
+    margin-top: 1rem;
+    /* height: 10vh; */
+
+}
+.breakfast-container img{
+    /* height: 10vh; */
+    width: 6rem;
+    border-radius: 1rem;
+}

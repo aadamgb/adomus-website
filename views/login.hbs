@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style/login.css">
+    <script src="https://cdn.jsdelivr.net/npm/kute.js@2.2.4/dist/kute.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    {{!-- <h2>User Registration</h2> --}}
+    <form action="/auth/login" method="POST">
+
+        <section id="login-form">
+            <div class="container">
+                <img src="/assets/LogoV2.svg" class="logo" alt="logo">
+                <div class="form-group">
+                    <label for="email">Username or email</label>
+                    <input type="email" name="email" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="password" required>
+                </div>
+                {{#if message }}
+                    <h4 style="color: crimson;">{{message}}</h4>
+                {{/if}}
+                <ul>
+                    <a href=""><p class="f-password">Forgot password?</p></a>
+                    <div class="buttons-container">
+                        <li><button type="submit" class="submit-btn">Log In</button></li>
+                        <li><a href="./register"><button type="button" class="submit-btn">Sign Up</button></a></li>
+                    </div>
+                </ul>
+            </div>
+        </section>
+
+    </form>
+
+    <svg id="box"  viewBox="0 0 960 540"  xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1">
+
+        {{!-- <g transform="translate(475.5816505151912 255.09959443145036)">
+            <path id="blob1"
+                d="M122.5 -145C157.1 -116.9 182.5 -76.8 209.2 -22.5C236 31.8 264.1 100.3 239.1 132.8C214.1 165.4 135.9 162 72.1 175.2C8.4 188.4 -41 218.2 -90.3 214.7C-139.6 211.2 -188.9 174.4 -216 125.6C-243.1 76.8 -248.1 16.1 -226.5 -28.4C-204.9 -72.9 -156.8 -101.2 -114.6 -127.9C-72.4 -154.6 -36.2 -179.8 3.9 -184.4C43.9 -189 87.8 -173 122.5 -145"
+                fill="#00ba0b"></path>
+        </g>
+
+            <g transform="translate(465.76336216330515 262.3925815375742)" style="visibility: hidden;">
+            <path id="blob2"
+                d="M133.8 -131.4C189.2 -113 260.8 -85.8 286.7 -36.2C312.5 13.4 292.7 85.5 247.7 124C202.8 162.6 132.9 167.8 74 178.5C15 189.2 -32.8 205.5 -68.9 191.4C-104.9 177.3 -129.1 132.9 -169.6 86.4C-210.2 40 -267.1 -8.6 -269.6 -56.8C-272.1 -105 -220.3 -152.8 -166.3 -171.5C-112.3 -190.1 -56.1 -179.4 -8.5 -169.3C39.2 -159.2 78.4 -149.7 133.8 -131.4" 
+                fill="#00ba0b"></path>
+        </g> --}}
+    </svg>
+
+    <svg class="bottom-right" viewBox="0 0 960 540"  xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1">
+        
+        <g transform="translate(960, 540)">
+            <path id="bottom-right1"
+                d="M-378.6 0C-340.5 -34.2 -302.3 -68.5 -291 -120.5C-279.7 -172.6 -295.2 -242.5 -267.7 -267.7C-240.2 -292.9 -169.7 -273.5 -117.9 -284.6C-66.1 -295.6 -33 -337.1 0 -378.6L0 0Z" 
+                fill="rgb(12, 163, 12)">
+            </path>
+        </g>
+
+        <g transform="translate(960, 540)" style="visibility: hidden;">
+            <path id="bottom-right2"
+                d="M-378.6 0C-379.9 -56.4 -381.2 -112.8 -349.8 -144.9C-318.3 -176.9 -254.2 -184.6 -217.8 -217.8C-181.4 -251 -172.9 -309.8 -141.2 -340.9C-109.5 -372 -54.8 -375.3 0 -378.6L0 0Z" 
+                fill="rgb(12, 163, 12)">
+            </path>
+        </g>
+
+    </svg>
+       
+    <svg class="top-left" viewBox="0 0 960 540"  xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1">
+        <g transform="translate(0, 0)" >
+            <path id="top-left1"
+                d="M378.6 0C346.1 39.5 313.6 79 296.6 122.8C279.6 166.7 278.1 215 256 256C233.8 296.9 191 330.6 144.9 349.8C98.8 369 49.4 373.8 0 378.6L0 0Z" 
+                fill="rgb(12, 163, 12)">
+            </path>
+        </g>
+        <g transform="translate(0, 0)" style="visibility: hidden;">
+            <path id="top-left2"
+                d="M378.6 0C374.4 53.1 370.3 106.1 343.7 142.4C317.1 178.6 268 198 234.1 234.1C200.1 270.1 181.4 322.9 144.9 349.8C108.4 376.6 54.2 377.6 0 378.6L0 0Z" 
+                fill="rgb(0, 134, 18)">
+            </path>
+        </g>
+        <g transform="translate(0, 0)" style="visibility: hidden;" >
+            <path id="top-left3"
+                d="M378.6 0C338.9 35.4 299.2 70.7 286.4 118.6C273.6 166.5 287.8 227 267.7 267.7C247.6 308.4 193.1 329.4 142.7 344.6C92.4 359.8 46.2 369.2 0 378.6L0 0Z" 
+                fill="#4CAF50">
+            </path>
+        </g>
+    </svg>
+
+    
+
+<script>
+    const tween1 = KUTE.fromTo(
+        '#top-left1',
+        { path: '#top-left1' },
+        { path: '#top-left2' },
+        { repeat: 999, duration: 3000, yoyo: true }
+    );
+
+
+    const tween2 = KUTE.fromTo(
+        '#bottom-right1',
+        { path: '#bottom-right1' },
+        { path: '#bottom-right2' },
+        { repeat: 999, duration: 5000, yoyo: true }
+    );
+
+    // tween1.chain(tween2);
+    // tween1.chain(tween3);
+    tween1.start();
+    tween2.start();
+
+    function resetViewbox(e){
+   box.setAttribute("viewBox","0 0 "+e[0].contentBoxSize[0].inlineSize+" "+e[0].contentBoxSize[0].blockSize)      
+   //console.log("New viewBox: ", box.getAttribute("viewBox"))   
+}
+
+new ResizeObserver(resetViewbox).observe(fluid)
+</script>
+
+</body>
+</html>
