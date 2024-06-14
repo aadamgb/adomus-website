@@ -3,8 +3,7 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const { promisify } = require('util');
 
-const session = require('express-session');
-const flash = require('connect-flash');
+
 
 const adomus_db = mysql.createConnection({
     host: process.env.database_host,
@@ -15,7 +14,7 @@ const adomus_db = mysql.createConnection({
 
 
 exports.login = async (req, res, next) => {
-    
+
     console.log(req.body);
     const { email, password } = req.body;
 
@@ -25,7 +24,7 @@ exports.login = async (req, res, next) => {
         message: 'Please provide email and password'
       });
     }
-  
+
     // 2) Check if user exists && password is correct
     adomus_db.query('SELECT * FROM users WHERE email = ?', [email], async (error, results) => {
       // console.log(results);
@@ -43,7 +42,7 @@ exports.login = async (req, res, next) => {
         const token = jwt.sign({ id }, process.env.JWT_SECRET, {
           expiresIn: process.env.JWT_EXPIRES_IN
         });
-  
+
         const cookieOptions = {
           expires: new Date(
             Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000
@@ -51,7 +50,7 @@ exports.login = async (req, res, next) => {
           httpOnly: true
         };
         res.cookie('jwt', token, cookieOptions);
-  
+
         res.status(200).redirect("/browse");
       }
     });
@@ -67,7 +66,7 @@ exports.isLoggedIn = async (req, res, next) => {
           req.cookies.jwt,
           process.env.JWT_SECRET
         );
-  
+
         // console.log("decoded");
         // console.log(decoded);
 
@@ -109,7 +108,7 @@ exports.register = (req, res) => {
             return res.render('register', {
                 message: 'Email already in use'
             })
-        }else if( pass !== re_pass) { 
+        }else if( pass !== re_pass) {
             return res.render('register', {
                 message: 'Passwords do not match'
             });
@@ -143,14 +142,15 @@ exports.logout = (req, res) => {
 
 exports.productsInfo =  (req, res, next) => {
   console.log('Middleware 2 called');
-  adomus_db.query('SELECT * FROM products', (error, results) =>{
+  adomus_db.query('SELECT * FROM products', (error, results) => {
     //  console.log(results); // Log results to verify
-     req.products = results[1];
+
+     req.products = results;
      return next();
   });
 
 };
-exports.test =  async (req, res) => {
+exports.test =  (req, res) => {
   // const { orderDate, orderedDate} = req.body;
   // console.log(req.body);
   // console.log(orderDate);
@@ -159,6 +159,32 @@ exports.test =  async (req, res) => {
   console.log(req.days);
 
   req.session.message = req.body;
-  res.redirect('/menu');
+  res.status(10000).redirect('/menu');
 
 };
+
+exports.addCart =  (req, res) => {
+  if(!req.session.cart){
+    req.session.cart = [];
+  }
+  // req.session.cart = req.body
+  let count = 0;
+  // for(let i = 0; i < req.session.cart.length; i++){
+  //   if(req.session.cart[i].ProductID == req.body.ProductID){
+  //     count++;
+  //   }
+  // }
+  if(count == 0){
+
+    const emptyCart = 'No items added';
+  }    
+  const cartData = req.body;
+  req.session.cart.push(cartData);
+  console.log(req.body);
+  
+  setTimeout(() => {
+    res.redirect("/menu");
+  }, 500);
+
+};
+

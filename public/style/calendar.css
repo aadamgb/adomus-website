@@ -20,8 +20,8 @@ body{
 }
 
 img{
-    /* height: 10vh; */
-    height: 6rem;
+    /* height: 6vh; */
+    /* height: 1rem; */
     border-radius: 1rem;
 }
 
@@ -267,10 +267,19 @@ li.current::after{
 
 /* Breakfast Style */
 
+.img{
+    /* max-width: calc(100% / 4 - 10px);  */
+    height: auto;
+}
 
 .b-mon{
     grid-row: 3 / 4;
     grid-column: 2 / 3;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    flex: 1;
+    text-align: center;
 }
 .b-tue{
     grid-row: 3 / 4;

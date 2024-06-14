@@ -33,7 +33,10 @@
             {{!-- Breakfast --}}
 
             <span class="b-mon">
-                <img src="./assets/Slider-food/tranding-food-8.png" alt="Tranding">
+                {{#each cart}}
+                {{!-- <p>{{this.ProductID}} {{this.ProductName}} {{this.UnitPrice}} s{{this.ProductImage}} </p> --}}
+                    <img class="img" src={{this.ProductImage}} alt="Tranding">
+                {{/each}}
             </span>
             <span class="b-tue">
                 <img src="./assets/Slider-food/tranding-food-7.png" alt="Tranding">
@@ -57,8 +60,8 @@
             {{!-- Lunch --}}
 
             <span class="l-mon">
-                <img src="./assets/Slider-food/tranding-food-1.png" alt="Tranding">
-                <img src="./assets/Slider-food/tranding-food-1.png" alt="Tranding">
+                {{!-- <img src="./assets/Slider-food/tranding-food-1.png" alt="Tranding">
+                <img src="./assets/Slider-food/tranding-food-1.png" alt="Tranding"> --}}
             </span>
             <span class="l-tue">
                 <img src="./assets/Slider-food/tranding-food-1.png" alt="Tranding">
@@ -196,6 +199,7 @@
     </script>
 
     <script>
+
         function submitDate(date) {
             let currentDate = new Date().toLocaleDateString();
             let datee = new Date(date);
@@ -253,6 +257,35 @@
             document.body.appendChild(form);
             form.submit();
         }
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var container = document.querySelector('.b-mon');
+            var images = container.querySelectorAll('img');
+            var message = document.createElement('div');
+            var imageWidth; // Adjust 2px for margin
+
+
+            if (images.length == 1){
+                imageWidth = 50;
+            }else if (images.length >= 4){
+                imageWidth = (100 / 3) - 10;
+            }else{
+                imageWidth = (100 / images.length) - 10 ;
+            }           
+            images.forEach(function(img) {
+                img.style.width = imageWidth + '%'  ;
+            });
+            message.className = 'message';
+            message.textContent = 'Too many items XD';
+
+            if (images.length > 6) {
+                container.innerHTML = ''; // Clear existing images
+                container.appendChild(message);
+            }
+        });
+
     </script>
 </body>
 </html>

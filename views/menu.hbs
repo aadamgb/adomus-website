@@ -10,11 +10,6 @@
 </head>
 <body>
 
-            {{#each days}}
-            {{this.orderDate}}
-            {{this.orderedDay}}
-        {{/each}}
-
   <nav class="myNav">
     <div class="container">
         <img src="./assets/LogoV2.svg" class="logo" alt="logo">
@@ -26,96 +21,188 @@
         </ul>
     </div>
   </nav>
+
     <div class="day-container">
-        
         {{!-- <h1>Hello {{user.username}}!!  <br> --}}
          <h1>Hello {{user.username}}!! Choose your food for the </h1> 
          <h1 class="date">{{days.orderWeek}}</h1>
          <h1 >{{days.orderDay}} of {{days.orderMonth}}</h1>
+         {{!-- {{#if ((length cart) gt 0)}} --}}
+            
+        {{!-- {{/if}} --}}
+        
     {{!-- The current date is  {{days.orderedDate}} --}}
-    
     </div>
-    {{!-- <div class="spacer layer1 flip"></div> --}}
+
     <div class="first-dish">
         <div class="header-top header-top1"><h4>Breakfast</h4></div>
         <div class="swiper mySwiper">
+
             <div class="swiper-wrapper">
-
+                {{#each products}}
+                    {{#if (eq this.CategoryID 1)}}
+                        <div class="swiper-slide">
+                            <img src={{this.ProductImage}} alt="Tranding">
+                            <span class="caption"><p>{{this.ProductName}}</p></span>
+                            <form action="/auth/addCart" method="post">
+                                <input type="hidden" name="ProductID" value={{this.ProductID}}> 
+                                <input type="hidden" name="ProductName" value={{this.ProductName}}> 
+                                <input type="hidden" name="ProductImage" value={{this.ProductImage}}> 
+                                <input type="hidden" name="UnitPrice" value={{this.UnitPrice}}>
+                                <input type="hidden" name="CategoryID" value={{this.CategoryID}}>
+                                <button type="submit" class="button" value="Add to Cart">Select</button> 
+                            </form>
+                        </div>
+                    {{/if}}
+                {{/each}}
+               
                 <div class="swiper-slide">
-                    <img src="./assets/Slider-food/tranding-food-8.png" alt="Tranding">
+                   <img src={{products.[1].ProductImage}} alt="Tranding">
+                    <span class="caption"><p>{{products.[1].ProductName}}</p></span>
                 </div>
-
                 <div class="swiper-slide">
-                   <img src="./assets/Slider-food/tranding-food-7.png" alt="Tranding">
-                    <span class="caption"><p>{{products.ProductID}}</p></span>
+                   <img src={{products.[2].ProductImage}} alt="Tranding">
+                    <span class="caption"><p>{{products.[2].ProductName}}</p></span>
                 </div>
-
-                <div class="swiper-slide">
-                    <img src="./assets/Food-images/Breakfast/b-3.jpg" alt="Tranding">
-                </div>
-
-                <div class="swiper-slide">
-                    <img src="./assets/Food-images/Breakfast/b-4.jpg" alt="Tranding">
-                    <span class="caption"><p>Toast Eggs</p></span>                    
-                </div>
-
-                <div class="swiper-slide">
-                    <img src="./assets/Food-images/Breakfast/b-5.jpg" alt="Tranding">
-                </div>
-
-                <div class="swiper-slide">
-                    <img src="./assets/Food-images/Breakfast/b-2.jpg" alt="Tranding">
-                </div>
-
-                <div class="swiper-slide">
-                    <img src="./assets/Food-images/Breakfast/b-7.jpg" alt="Tranding">
-                    <span class="caption"><p>{{products.ProductID}}</p></span>
-                </div>
-
-                <div class="swiper-slide">
-                    <img src="./assets/Slider-food/tranding-food-2.png" alt="Tranding">
-                </div>
-
-                <div class="swiper-slide">
-                    <img src="./assets/Slider-food/tranding-food-1.png" alt="Tranding">
-                    <span class="caption"><p>Pizza</p></span>                    
-                </div>
-
-                <div class="swiper-slide">
-                    <img src="./assets/Slider-food/tranding-food-2.png" alt="Tranding">
-                </div>
-
-                <div class="swiper-slide">
-                    <img src="./assets/Slider-food/tranding-food-3.png" alt="Tranding">
-                </div>
-
-                <div class="swiper-slide">
-                    <img src="./assets/Slider-food/tranding-food-4.png" alt="Tranding">
-                </div>
-                {{!-- <div class="swiper-slide"><img src="./assets/Slider-food/tranding-food-5.png" alt="Tranding"></div>
-                <div class="swiper-slide"><img src="./assets/Slider-food/tranding-food-7.png" alt="Tranding"></div>
-                <div class="swiper-slide"><img src="./assets/Slider-food/tranding-food-1.png" alt="Tranding"></div> --}}
             </div>
+
             <div class="swiper-button-next"></div>
             <div class="swiper-button-prev"></div>
             <div class="swiper-pagination"></div>
         </div>
-        {{!-- <div class="header-bottom"></div> --}}
     </div>
 
     <section class="first-dish">
-        <div class="header-top">Second Dishes</div>
+        <div class="header-top"><h4>Lunch</h4></div>
         <div class="swiper mySwiper">
             <div class="swiper-wrapper">
-                <div class="swiper-slide"><img src="./assets/Slider-food/tranding-food-1.png" alt="Tranding"></div>
-                <div class="swiper-slide"><img src="./assets/Slider-food/tranding-food-2.png" alt="Tranding"></div>
-                <div class="swiper-slide"><img src="./assets/Slider-food/tranding-food-3.png" alt="Tranding"></div>
-                <div class="swiper-slide"><img src="./assets/Slider-food/tranding-food-4.png" alt="Tranding"></div>
-                <div class="swiper-slide"><img src="./assets/Slider-food/tranding-food-5.png" alt="Tranding"></div>
-                <div class="swiper-slide"><img src="./assets/Slider-food/tranding-food-6.png" alt="Tranding"></div>
-                <div class="swiper-slide"><img src="./assets/Slider-food/tranding-food-7.png" alt="Tranding"></div>
-                <div class="swiper-slide"><img src="./assets/Slider-food/tranding-food-1.png" alt="Tranding"></div>
-                <div class="swiper-slide"><img src="./assets/Slider-food/tranding-food-2.png" alt="Tranding"></div>
+                {{#each products}}
+                    {{#if (eq this.CategoryID 2)}}
+                        <div class="swiper-slide">
+                            <img src={{this.ProductImage}} alt="Tranding">
+                            <span class="caption"><p>{{this.ProductName}}</p></span>
+                            <form action="/auth/addCart" method="post">
+                                <input type="hidden" name="ProductID" value={{this.ProductID}}> 
+                                <input type="hidden" name="ProductName" value={{this.ProductName}}> 
+                                <input type="hidden" name="ProductImage" value={{this.ProductImage}}> 
+                                <input type="hidden" name="UnitPrice" value={{this.UnitPrice}}>
+                                <input type="hidden" name="CategoryID" value={{this.CategoryID}}>
+                                <button type="submit" class="button" value="Add to Cart">Select</button> 
+                            </form>
+                        </div>
+                    {{/if}}
+                {{/each}}
+               
+                <div class="swiper-slide">
+                   <img src={{products.[1].ProductImage}} alt="Tranding">
+                    <span class="caption"><p>{{products.[1].ProductName}}</p></span>
+                </div>
+                <div class="swiper-slide">
+                   <img src={{products.[2].ProductImage}} alt="Tranding">
+                    <span class="caption"><p>{{products.[2].ProductName}}</p></span>
+                </div>
+            </div>
+
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </section>
+
+    {{!-- <section class="first-dish">
+        <div class="header-top"><h4>Dinner</h4></div>
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+
+                <div class="swiper-slide">
+                    <img src="./assets/Food-images/Lunch/l-1.jpg" alt="Tranding">
+                    <span class="caption"><p>{{products.ProductName}}</p></span>
+                </div>
+
+                <div class="swiper-slide">
+                   <img src="./assets/Food-images/Lunch/l-2.jpg" alt="Tranding">
+                    <span class="caption"><p>Toast Eggs</p></span>      
+                </div>
+
+                <div class="swiper-slide">
+                    <img src="./assets/Food-images/Lunch/l-3.jpg" alt="Tranding">
+                    <span class="caption"><p>{{products.ProductID}}</p></span>
+                </div>
+
+                <div class="swiper-slide">
+                    <img src="./assets/Food-images/Lunch/l-4.jpg" alt="Tranding">              
+                </div>
+
+                <div class="swiper-slide">
+                    <img src="./assets/Food-images/Lunch/l-5.jpg" alt="Tranding">
+                </div>
+
+                <div class="swiper-slide">
+                    <img src="./assets/Food-images/Lunch/l-6.jpg" alt="Tranding">
+                </div>
+
+                <div class="swiper-slide">
+                    <img src="./assets/Food-images/Lunch/l-7.jpg" alt="Tranding">
+                </div>
+
+                <div class="swiper-slide">
+                    <img src="./assets/Food-images/Lunch/l-1.jpg" alt="Tranding">
+                </div>
+
+                <div class="swiper-slide">
+                   <img src="./assets/Food-images/Lunch/l-2.jpg" alt="Tranding">
+                    <span class="caption"><p>{{products.ProductID}}</p></span>
+                </div>
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </section> --}}
+
+    <section class="first-dish">
+        <div class="header-top"><h4>Dinner</h4></div>
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+
+                <div class="swiper-slide">
+                    <img src="./assets/Food-images/Dinner/d-1.jpg" alt="Tranding">
+                </div>
+
+                <div class="swiper-slide">
+                   <img src="./assets/Food-images/Dinner/d-2.jpg" alt="Tranding">
+                    <span class="caption"><p>Toast Eggs</p></span>      
+                </div>
+
+                <div class="swiper-slide">
+                    <img src="./assets/Food-images/Dinner/d-3.jpg" alt="Tranding">
+                    <span class="caption"><p>{{products.ProductID}}</p></span>
+                </div>
+
+                <div class="swiper-slide">
+                    <img src="./assets/Food-images/Dinner/d-4.jpg" alt="Tranding">              
+                </div>
+
+                <div class="swiper-slide">
+                    <img src="./assets/Food-images/Dinner/d-5.jpg" alt="Tranding">
+                </div>
+
+                <div class="swiper-slide">
+                    <img src="./assets/Food-images/Dinner/d-6.jpg" alt="Tranding">
+                </div>
+
+                <div class="swiper-slide">
+                    <img src="./assets/Food-images/Dinner/d-7.jpg" alt="Tranding">
+                </div>
+
+                <div class="swiper-slide">
+                    <img src="./assets/Food-images/Dinner/d-1.jpg" alt="Tranding">
+                </div>
+
+                <div class="swiper-slide">
+                   <img src="./assets/Food-images/Dinner/d-2.jpg" alt="Tranding">
+                    <span class="caption"><p>{{products.ProductID}}</p></span>
+                </div>
             </div>
             <div class="swiper-button-next"></div>
             <div class="swiper-button-prev"></div>
@@ -124,18 +211,47 @@
     </section>
 
     <section class="first-dish">
-        <div class="header-top">Second Dishes</div>
+        <div class="header-top"><h4>Snacks</h4></div>
         <div class="swiper mySwiper">
             <div class="swiper-wrapper">
-                <div class="swiper-slide"><img src="./assets/Slider-food/tranding-food-1.png" alt="Tranding"></div>
-                <div class="swiper-slide"><img src="./assets/Slider-food/tranding-food-2.png" alt="Tranding"></div>
-                <div class="swiper-slide"><img src="./assets/Slider-food/tranding-food-3.png" alt="Tranding"></div>
-                <div class="swiper-slide"><img src="./assets/Slider-food/tranding-food-4.png" alt="Tranding"></div>
-                <div class="swiper-slide"><img src="./assets/Slider-food/tranding-food-5.png" alt="Tranding"></div>
-                <div class="swiper-slide"><img src="./assets/Slider-food/tranding-food-6.png" alt="Tranding"></div>
-                <div class="swiper-slide"><img src="./assets/Slider-food/tranding-food-7.png" alt="Tranding"></div>
-                <div class="swiper-slide"><img src="./assets/Slider-food/tranding-food-1.png" alt="Tranding"></div>
-                <div class="swiper-slide"><img src="./assets/Slider-food/tranding-food-2.png" alt="Tranding"></div>
+                <div class="swiper-slide">
+                    <img src="./assets/Food-images/Snacks/s-1.jpg" alt="Tranding">
+                </div>
+
+                <div class="swiper-slide">
+                   <img src="./assets/Food-images/Snacks/s-2.jpg" alt="Tranding">
+                    <span class="caption"><p>Toast Eggs</p></span>      
+                </div>
+
+                <div class="swiper-slide">
+                    <img src="./assets/Food-images/Snacks/s-3.jpg" alt="Tranding">
+                    <span class="caption"><p>{{products.ProductID}}</p></span>
+                </div>
+
+                <div class="swiper-slide">
+                    <img src="./assets/Food-images/Snacks/s-4.jpg" alt="Tranding">              
+                </div>
+
+                <div class="swiper-slide">
+                    <img src="./assets/Food-images/Snacks/s-5.jpg" alt="Tranding">
+                </div>
+
+                <div class="swiper-slide">
+                    <img src="./assets/Food-images/Snacks/s-6.jpg" alt="Tranding">
+                </div>
+
+                <div class="swiper-slide">
+                    <img src="./assets/Food-images/Snacks/s-7.jpg" alt="Tranding">
+                </div>
+
+                <div class="swiper-slide">
+                    <img src="./assets/Food-images/Snacks/s-1.jpg" alt="Tranding">
+                </div>
+
+                <div class="swiper-slide">
+                   <img src="./assets/Food-images/Snacks/s-2.jpg" alt="Tranding">
+                    <span class="caption"><p>{{products.ProductID}}</p></span>
+                </div>
             </div>
             <div class="swiper-button-next"></div>
             <div class="swiper-button-prev"></div>
@@ -143,29 +259,79 @@
         </div>
     </section>
 
-    <section class="first-dish">
-        <div class="header-top">Second Dishes</div>
-        <div class="swiper mySwiper">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide"><img src="./assets/Slider-food/tranding-food-1.png" alt="Tranding"></div>
-                <div class="swiper-slide"><img src="./assets/Slider-food/tranding-food-2.png" alt="Tranding"></div>
-                <div class="swiper-slide"><img src="./assets/Slider-food/tranding-food-3.png" alt="Tranding"></div>
-                <div class="swiper-slide"><img src="./assets/Slider-food/tranding-food-4.png" alt="Tranding"></div>
-                <div class="swiper-slide"><img src="./assets/Slider-food/tranding-food-5.png" alt="Tranding"></div>
-                <div class="swiper-slide"><img src="./assets/Slider-food/tranding-food-6.png" alt="Tranding"></div>
-                <div class="swiper-slide"><img src="./assets/Slider-food/tranding-food-7.png" alt="Tranding"></div>
-                <div class="swiper-slide"><img src="./assets/Slider-food/tranding-food-1.png" alt="Tranding"></div>
-                <div class="swiper-slide"><img src="./assets/Slider-food/tranding-food-2.png" alt="Tranding"></div>
-            </div>
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
-            <div class="swiper-pagination"></div>
+    <div class="spacer">
+        <div class="spacer-txt">
+            <h1>Checkout</h1>
         </div>
-    </section>
+    </div>
+
+    <div class="checkout-container">
+        <div class="items-container">
+            <div class="bld-check">
+                <div class="text-container">
+                    <h2>Breakfast</h2>
+                </div>
+                <div class="img-container">
+                    {{#each cart}}
+                        {{#if (eq this.CategoryID 1)}}
+                            <img src={{this.ProductImage}} alt="checkout">
+                            <button type="button" class="button" onclick="remove_item({{this.ProductID}})">remove</button>
+                        {{/if}}
+                    {{/each}}
+                </div>
+            </div>
+            <div class="bld-check">
+                <div class="text-container">
+                    <h2>Lunch</h2>
+                </div>
+                <div class="img-container">
+                    {{#each cart}}
+                        {{#if (eq this.CategoryID 2)}}
+                            <img src={{this.ProductImage}} alt="checkout">
+                        {{/if}}
+                    {{/each}}
+                </div>
+            </div>
+            <div class="bld-check">
+                <div class="text-container">
+                    <h2>Dinner</h2>
+                </div>
+                <div class="img-container">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <button type="submit" class="button" value="Add to Cart">Checkout</button> 
+{{!-- {{#each cart}} 
+                <h1>Hi you added <span style="color: crimson;">{{this.ProductName}}</span> to the cart for the day </h1>
+            {{/each}}    
+        <h1><span style="color: crimson;">{{days.orderDay}}</span>  of <span style="color: crimson;">{{days.orderMonth}}</span> ! </h1> --}}
 
 
-
+    <script src="https://cdn.jsdelivr.net/npm/handlebars@4.7.7/dist/handlebars.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <script>
+        window.addEventListener('beforeunload', function() {
+            localStorage.setItem('scrollPosition', window.scrollY);
+        });
+    </script>
+    <script>
+        window.addEventListener('load', function() {
+            var scrollPosition = localStorage.getItem('scrollPosition');
+            if (scrollPosition !== null) {
+                window.scrollTo(0, parseInt(scrollPosition, 10));
+                localStorage.removeItem('scrollPosition'); // Clear the stored position after it's been used
+            }
+        });
+
+    </script>
+    <script>
+        function remove_item(item_id){
+            window.location.href = '/remove_item?id=' + item_id;
+        }
+    </script>
     <script>
         var swiper = new Swiper(".mySwiper", {
         slidesPerView: 6,
@@ -182,8 +348,6 @@
             prevEl: ".swiper-button-prev",
         },
         });
-
-
         const navbar = document.querySelector('.myNav');
         window.onscroll = () => {
             if (window.scrollY > 50) {

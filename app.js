@@ -12,6 +12,10 @@ const session = require('express-session');
 const flash = require('connect-flash');
 // Shopping cart test
 
+const Handlebars = require('handlebars');
+
+
+
 
 dotenv.config({path: './.env'})
 
@@ -25,9 +29,19 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(cookieParser());
 
-// app.engine('hbs', exphbs.engine({defaultLayout: null,  extname: '.hbs' }));
 
+app.engine('hbs', exphbs.engine({defaultLayout: null,  extname: '.hbs' }));
 app.set('view engine','hbs');
+
+
+Handlebars.registerHelper('ifEqual', function(arg1, arg2, options) {
+    return (arg1 === arg2) ? options.fn(this) : options.inverse(this);
+});
+
+Handlebars.registerHelper('eq', function(a, b) {
+    return a == b;
+});
+
 
 // Session or flash messages
 
@@ -35,6 +49,7 @@ app.use(session({
     secret: 'your-secret-key',
     resave: false,
     saveUninitialized: true,
+    cookie: {secure: false}
   }));
   
   app.use(flash());

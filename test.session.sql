@@ -96,22 +96,25 @@ CREATE TABLE Suppliers (
 );
 
 -- @block
+SET FOREIGN_KEY_CHECKS = 0;
+DROP TABLE Products;
+SET FOREIGN_KEY_CHECKS = 1;
 
+-- @block
 CREATE TABLE Products (
     ProductID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     ProductName VARCHAR(40) NOT NULL,
+    ProductImage VARCHAR(255),
     SupplierID INT,
     CategoryID INT,
-    QuantityPerUnit VARCHAR(20),
     UnitPrice DECIMAL(10, 2),
     UnitsInStock SMALLINT,
-    UnitsOnOrder SMALLINT,
-    ReorderLevel SMALLINT,
     Discontinued TINYINT(1) NOT NULL,
     FOREIGN KEY (SupplierID) REFERENCES Suppliers(SupplierID),
     FOREIGN KEY (CategoryID) REFERENCES Categories(CategoryID)
 );
 
+-- @block
 CREATE TABLE Shippers (
     ShipperID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     CompanyName VARCHAR(40) NOT NULL,
@@ -165,9 +168,28 @@ VALUES ('Davolio', 'Nancy', 'Sales Representative', 'Ms.', '1948-12-08', '1992-0
 INSERT INTO Suppliers (CompanyName, ContactName, ContactTitle, Address, City, Region, PostalCode, Country, Phone, Fax, HomePage) 
 VALUES ('Exotic Liquids', 'Charlotte Cooper', 'Purchasing Manager', '49 Gilbert St.', 'London', NULL, 'EC1 4SD', 'UK', '(171) 555-2222', NULL, NULL);
 
-INSERT INTO Products (ProductName, SupplierID, CategoryID, QuantityPerUnit, UnitPrice, UnitsInStock, UnitsOnOrder, ReorderLevel, Discontinued) 
-VALUES ('Chai', 1, 1, '10 boxes x 20 bags', 18.00, 39, 0, 10, 0), 
-       ('Chang', 1, 1, '24 - 12 oz bottles', 19.00, 17, 40, 25, 0);
+-- @block 
+DELETE FROM OrderDetails WHERE ProductID ='1';
+DELETE FROM Products WHERE ProductName ='Chai';
+-- @block
+INSERT INTO Products (ProductName, ProductImage, SupplierID, CategoryID, UnitPrice, UnitsInStock, Discontinued) 
+VALUES ('Avocado Eggs','./assets/Food-images/Breakfast/b-2.jpg', 1, 1,  2.5, 30, 0),
+       ('Bannana Toast','./assets/Food-images/Breakfast/b-3.jpg', 1, 1,  3.5, 10, 0),
+       ('Berry Yoghurt','./assets/Food-images/Breakfast/b-4.jpg', 1, 1,  1.5, 20, 0),
+       ('Pancackes','./assets/Food-images/Breakfast/b-5.jpg', 1, 1,  2.5, 40, 0),
+       ('Mix','./assets/Food-images/Breakfast/b-6.jpg', 1, 1,  4.5, 50, 0),
+       ('Fruit Mix','./assets/Food-images/Breakfast/b-7.jpg', 1, 1,  3.5, 5, 0); 
+-- @block
+INSERT INTO Products (ProductName, ProductImage, SupplierID, CategoryID, UnitPrice, UnitsInStock, Discontinued) 
+VALUES ('Avocado Eggs','./assets/Food-images/Lunch/l-1.jpg', 1, 1,  2.5, 30, 0),
+       ('Avocado Eggs','./assets/Food-images/Lunch/l-2.jpg', 1, 1,  2.5, 30, 0),
+       ('Bannana Toast','./assets/Food-images/Lunch/l-3.jpg', 1, 1,  3.5, 10, 0),
+       ('Berry Yoghurt','./assets/Food-images/Lunch/l-4.jpg', 1, 1,  1.5, 20, 0),
+       ('Pancackes','./assets/Food-images/Lunch/l-5.jpg', 1, 1,  2.5, 40, 0),
+       ('Mix','./assets/Food-images/Lunch/l-6.jpg', 1, 1,  4.5, 50, 0),
+       ('Fruit Mix','./assets/Food-images/Lunch/l-7.jpg', 1, 1,  3.5, 5, 0); 
+
+
 
 INSERT INTO Shippers (CompanyName, Phone) 
 VALUES ('Speedy Express', '(503) 555-9831'), 
