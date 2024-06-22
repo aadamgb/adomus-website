@@ -41,6 +41,14 @@ Handlebars.registerHelper('ifEqual', function(arg1, arg2, options) {
 Handlebars.registerHelper('eq', function(a, b) {
     return a == b;
 });
+Handlebars.registerHelper('getCartItemsByDate', function (cart, date, options) {
+    const items = cart[date];
+    if (items && items.length > 0) {
+      return options.fn(items);
+    } else {
+      return options.inverse(this);
+    }
+  });
 
 
 // Session or flash messages

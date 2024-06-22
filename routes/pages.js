@@ -25,6 +25,7 @@ router.get('/login', (req, res) => {
 
 router.get('/browse', authController.isLoggedIn, (req, res) =>{
     console.log("inside");
+    console.log(req.user);
     if(req.user) {
       res.render('browse', {
         user: req.user
@@ -34,39 +35,66 @@ router.get('/browse', authController.isLoggedIn, (req, res) =>{
     }
 })
 
- router.get('/menu', authController.isLoggedIn, authController.productsInfo,  (req, res) =>{
+ router.get('/menu', authController.isLoggedIn, authController.productsInfo, async (req, res) =>{
    if(req.user) {
-    // const days = req.session.message;
-     res.render('menu', {
-       user: req.user,
-       products: req.products,
-       cart: req.session.cart,
-       days: req.session.message
-     });
+    try {
+      setTimeout(() => {
+        res.render('menu', {
+          user: req.user,
+          products: req.products,
+          orders: req.session.orders,
+          cart: req.session.cart,
+          days: req.session.days,
+          message: req.session.message
+        });
+      }, 200);
+  }catch (error) {
+      // Handle errors here
+      res.status(500).send('Error fetching data');
+      };
+
    } else {
      res.redirect("/login");
    }
- })
+ });
+
+ router.get('/details', authController.isLoggedIn, async (req, res) =>{
+   if(req.user) {
+    console.log(req.user);
+    console.log(req.session.dishInfo);
+        res.render('details', {
+          user: req.user,
+          dish: req.session.dish,
+          dishInfo: req.session.dishInfo
+        });
+   } else {
+     res.redirect("/login");
+   }
+ });
+
 router.get('/remove_item', (req, res, next) => {
-  const ProductID = req.query.id;
-  console.log(ProductID);
+  console.log(req.query);
+  const {id, date} = req.query;
+  console.log(id);
+  console.log(date);
   let i = 0;
-  console.log(req.session.cart.length);
-  while (i < req.session.cart.length) {
-      console.log(i);
-      if (req.session.cart[i].ProductID === ProductID) {
-        req.session.cart.splice(i, 1);
-          break; // exit the loop when i is 5
-      }
-      i++;
+  console.log(req.session.cart[date].length);
+  req.session.cart[date] = req.session.cart[date].filter(item => item.ProductID != id);
+
+  if (req.session.cart[date].length === 0) {
+    delete req.session.cart[date];
   }
-  console.log("Loop has been terminated.");
-  setTimeout(() => {
+  console.log(req.session.cart[date]);
+  // while (i < req.session.cart[orderDate].length) {
+  //     console.log(i);
+  //     if (req.session.cart[i].ProductID === ProductID) {
+  //       req.session.cart.splice(i, 1);
+  //         break; // exit the loop when i is 5
+  //     }
+  //     i++;
+  // }
+  // console.log("Loop has been terminated.");
     res.redirect("/menu");
-  }, 400);
-  
-
-
 })
 
 router.get('/calendar', authController.isLoggedIn, authController.productsInfo, (req, res) =>{
@@ -74,6 +102,7 @@ router.get('/calendar', authController.isLoggedIn, authController.productsInfo, 
     res.render('calendar', {
       user: req.user,
       products: req.products,
+      orders: req.session.orders,
       cart: req.session.cart
     });
   } else {

@@ -1,0 +1,175 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+html, body {
+  position: relative;
+  height: fit-content;
+  scroll-behavior: smooth;
+  max-height: fit-content;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  color: #000;
+  margin: 0;
+  padding: 0;
+  margin-top: 15vh;
+ max-height: fit-content;
+ background-image: url(../assets/details-bckg.svg);
+ background-repeat: no-repeat;
+ background-position: center;
+ object-fit: cover;
+ 
+}
+nav{
+
+    /* background-color: chartreuse; */
+    position: fixed; /* Set the navbar to fixed position */
+    top: 0; /* Position the navbar at the top of the page */
+    z-index: 13;
+    width: 100vw;
+    background:rgba(255, 255, 255, 0);
+    /* border-radius: 0 0 1rem 1rem ; */
+  }
+.nav-links{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+    gap: 5rem;
+    font-size: 1.2rem;
+}
+.logo{
+    height: 3rem;
+}
+
+.container{
+    margin-left: 2rem;
+    margin-right: 2rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+li, a{
+ list-style: none;
+ text-decoration: none;
+ color: black;
+}
+
+a{
+font-size: medium;
+}
+.p-img{
+    max-height: 30rem;
+    min-width: 5rem;
+    width: 90%;
+    /* aspect-ratio: 1/1; */
+    border-radius: 1rem;
+    box-shadow: 15px 15px 5px 2px rgba(0,0,0,.05);
+}
+
+.nutritionalChart{
+    max-height: 30rem;
+    max-width: 30rem;
+}
+
+.breakdow-container{
+    /* background-color: aqua; */
+    background-color: rgb(193, 255, 180);
+    display: flex;
+    justify-content: space-evenly;
+    /* border: solid 5px chartreuse; */
+    border-radius: 2rem;
+    margin: 6rem;
+    /* width: 80vw; */
+    justify-self: center;
+    box-shadow: 15px 15px 5px 2px rgba(0,0,0,.05);
+}
+
+.dish{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    /* background-color: aqua; */
+}
+
+.info{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    /* background-color: blueviolet; */
+    width: 60%;
+}
+
+.numbers{
+    display: flex;
+    justify-content: space-around;
+    width: 80%;
+    /* background-color: brown; */
+    background-color: rgb(79, 239, 79);
+    /* border: solid 5px chartreuse; */
+    box-shadow: 15px 15px 10px 2px rgba(0,0,0,.05);
+    border-radius: 2rem;
+    padding: 1rem;
+    max-height: 60%;
+}
+
+.numbers:hover{
+    /* scale: 1.01; */
+    transform: translate(-3px, -3px);
+    box-shadow: 18px 18px 10px 2px rgba(0,0,0,.05);
+}
+.description{
+    display: flex;
+    justify-content: center;
+    width: 80%;
+    padding: 1rem;
+    background-color: rgb(79, 239, 79);
+    /* border: solid 5px chartreuse; */
+    box-shadow: 15px 15px 10px 2px rgba(0,0,0,.05);
+    border-radius: 2rem;
+    /* text-align: center; */
+    z-index: 1;
+}
+
+.description:hover{
+    transform: translate(-3px, -3px);
+    box-shadow: 18px 18px 10px 2px rgba(0,0,0,.05);
+}
+.ingredients{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    /* background-color: aqua; */
+    width: 50%;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.ing-container{
+ display: flex;
+ align-items: center;
+ gap: 0.5rem;
+ flex-wrap: wrap;
+ /* background-color: blue; */
+}
+
+.ing-img{
+    border-radius: 1rem;
+    max-width: 4rem;
+}
+.items-container{
+    flex: 0;
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 0.5rem;
+    /* background-color: chocolate; */
+}

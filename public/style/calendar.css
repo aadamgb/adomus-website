@@ -74,6 +74,7 @@ a {
     align-items: center;
     margin-top: 4rem;
     max-height: fit-content;
+    flex-wrap: wrap;
 }
 
 .text-container{
@@ -270,6 +271,13 @@ li.current::after{
 .img{
     /* max-width: calc(100% / 4 - 10px);  */
     height: auto;
+    object-fit: cover;
+}
+img{
+    /* max-width: calc(100% / 4 - 10px);  */
+    height: auto;
+    object-fit: cover;
+    max-height: 70px;
 }
 
 .b-mon{

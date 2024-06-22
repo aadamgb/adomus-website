@@ -120,13 +120,15 @@ CREATE TABLE Shippers (
     CompanyName VARCHAR(40) NOT NULL,
     Phone VARCHAR(24)
 );
-
+-- @block
+DROP TABLE orderdetails;
+DROP TABLE Orders;
 -- @block
 CREATE TABLE Orders (
     OrderID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    CustomerID INT,
-    EmployeeID INT,
-    OrderDate DATE,
+    CustomerID INT NOT NULL,
+    -- EmployeeID INT,
+    OrderedAt DATETIME NOT NULL,
     RequiredDate DATE,
     ShippedDate DATE,
     ShipVia INT,
@@ -137,8 +139,8 @@ CREATE TABLE Orders (
     ShipRegion VARCHAR(15),
     ShipPostalCode VARCHAR(10),
     ShipCountry VARCHAR(15),
-    FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID),
-    FOREIGN KEY (EmployeeID) REFERENCES Employees(EmployeeID),
+    FOREIGN KEY (CustomerID) REFERENCES users(id),
+    -- FOREIGN KEY (EmployeeID) REFERENCES Employees(EmployeeID),
     FOREIGN KEY (ShipVia) REFERENCES Shippers(ShipperID)
 );
 
@@ -181,13 +183,13 @@ VALUES ('Avocado Eggs','./assets/Food-images/Breakfast/b-2.jpg', 1, 1,  2.5, 30,
        ('Fruit Mix','./assets/Food-images/Breakfast/b-7.jpg', 1, 1,  3.5, 5, 0); 
 -- @block
 INSERT INTO Products (ProductName, ProductImage, SupplierID, CategoryID, UnitPrice, UnitsInStock, Discontinued) 
-VALUES ('Avocado Eggs','./assets/Food-images/Lunch/l-1.jpg', 1, 1,  2.5, 30, 0),
-       ('Avocado Eggs','./assets/Food-images/Lunch/l-2.jpg', 1, 1,  2.5, 30, 0),
-       ('Bannana Toast','./assets/Food-images/Lunch/l-3.jpg', 1, 1,  3.5, 10, 0),
-       ('Berry Yoghurt','./assets/Food-images/Lunch/l-4.jpg', 1, 1,  1.5, 20, 0),
-       ('Pancackes','./assets/Food-images/Lunch/l-5.jpg', 1, 1,  2.5, 40, 0),
-       ('Mix','./assets/Food-images/Lunch/l-6.jpg', 1, 1,  4.5, 50, 0),
-       ('Fruit Mix','./assets/Food-images/Lunch/l-7.jpg', 1, 1,  3.5, 5, 0); 
+VALUES ('Burritos','./assets/Food-images/Lunch/l-1.jpg', 1, 2,  2.5, 30, 0),
+       ('Salad','./assets/Food-images/Lunch/l-2.jpg', 1, 2,  2.5, 30, 0),
+       ('Beef','./assets/Food-images/Lunch/l-3.jpg', 1, 2,  3.5, 10, 0),
+       ('Chicken','./assets/Food-images/Lunch/l-4.jpg', 1, 2,  1.5, 20, 0),
+       ('Salmon','./assets/Food-images/Lunch/l-5.jpg', 1, 2,  2.5, 40, 0),
+       ('Hamburger','./assets/Food-images/Lunch/l-6.jpg', 1, 2,  4.5, 50, 0),
+       ('Spagetti','./assets/Food-images/Lunch/l-7.jpg', 1, 2,  3.5, 5, 0); 
 
 
 
@@ -203,3 +205,39 @@ INSERT INTO OrderDetails (OrderID, ProductID, UnitPrice, Quantity, Discount)
 VALUES (1, 1, 18.00, 12, 0), 
        (1, 2, 19.00, 10, 0);
 
+
+
+-- @block
+CREATE TABLE ingredients (
+    IngredientID INT AUTO_INCREMENT PRIMARY KEY,
+    Name VARCHAR(50) NOT NULL,
+    Stock DECIMAL(10, 2) NOT NULL, -- in grams
+    Protein DECIMAL(10, 2) NOT NULL,
+    Fat DECIMAL(10, 2) NOT NULL,
+    Carbohydrates DECIMAL(10, 2) NOT NULL,
+    Calories DECIMAL(10, 2) NOT NULL
+);
+
+-- @block
+CREATE TABLE recipes (
+    ProductID INT,
+    IngredientID INT,
+    Quantity DECIMAL(10, 2) NOT NULL, -- in grams
+    PRIMARY KEY (ProductID, IngredientID),
+    FOREIGN KEY (ProductID) REFERENCES products(ProductID),
+    FOREIGN KEY (IngredientID) REFERENCES ingredients(IngredientID)
+);
+
+INSERT INTO ingredients (name, Stock, Protein, Fat, Carbohydrates, Calories)
+VALUES
+('Nonfat greek yougurt', 1000, 0.1, 0.004, 0.04, 0.59),
+('Blueberries', 2000, 0.01, 0.003, 0.14, 0.57),
+('Strawberries', 1000, 0.007, 0.003, 0.077, 0.32),
+('Granola', 2000, 0.12, 0.18, 0.67, 0.467);
+
+INSERT INTO recipes (ProductID, IngredientID, Quantity)
+VALUES
+(SELECT products FROM dishes WHERE ProductName='Muesli'), (SELECT ingredient_id FROM ingredients WHERE name='Nonfat greek yougurt', 227),
+(SELECT products FROM dishes WHERE ProductName='Muesli'), (SELECT ingredient_id FROM ingredients WHERE name='Blueberries', 74),
+(SELECT products FROM dishes WHERE ProductName='Muesli'), (SELECT ingredient_id FROM ingredients WHERE name='Strawberries', 76),
+(SELECT products FROM dishes WHERE ProductName='Muesli'), (SELECT ingredient_id FROM ingredients WHERE name='Granola', 29);

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detailst</title>
+    <link rel="stylesheet" href="/style/details.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <nav id="nav" class="myNavv" >
+        <div class="container">
+            <img src="/assets/LogoV2.svg" class="logo" alt="logo">
+            <ul class="nav-links">
+                <li><a href="./calendar">Calendar</a></li>
+                <li><a href="#experience">Dashboard</a></li>
+                <li><a href="#projects">Profile</a></li>
+                <li><a href="/auth/logout">Log Out</a></li>
+            </ul>
+        </div>
+    </nav>
+    {{!-- <h1>Hello world!! My name is {{user.username}} </h1>
+    <h2 style="color: blue;">
+    The price is: <span style="color: black;"> {{dish.UnitPrice}} €</span>
+    Protein: <span style="color: black;"> {{dishInfo.totalProtein}} </span>
+    Fat: <span style="color: black;"> {{dishInfo.totalFat}} </span>
+    Carbs: <span style="color: black;"> {{dishInfo.totalCarbs}} </span>
+    Calories: <span style="color: black;"> {{dishInfo.totalCalories}} </span>
+    </h2> --}}
+
+    <div class="breakdow-container">
+        <div class="dish">
+            <h1>{{dish.ProductName}} </h1>
+            <img class="p-img" src={{dish.ProductImage}} alt="">
+            <h2 >Price: {{dish.UnitPrice}} €</h2>
+
+        </div>
+
+        <div class="info">
+            <div class="numbers">
+                <div class="ingredients">
+                    <h2>Ingredients</h2>
+                    <div class="items-container">
+                        {{#each dishInfo.ingredients}}
+                        <li>
+                            <strong>{{Name}}:</strong> 
+                            <br>
+                            <div class="ing-container">
+                                <img class="ing-img" src={{ImagePath}} alt=""> {{Quantity}} g
+                            </div>
+                        </li>
+                        {{/each}}
+                    </div>
+                </div>
+                <div class="chart">
+                    <h2>Nutritional Breakdown</h2>
+                    <canvas id="nutritionalChart" class="nutritionalChart" width="15rem" height="15rem" ></canvas>      
+                </div>
+            </div>
+            <div class="description">
+                <div class="text">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis quod itaque eligendi nisi laboriosam illo cum explicabo ipsa et illum consequatur optio corrupti earum ipsam aperiam libero, nostrum sapiente amet vero veritatis consequuntur quasi aut similique? Ut architecto odit ipsam veritatis nemo, consectetur sequi! Delectus debitis facilis ea fugit iure explicabo est dolorum, reprehenderit culpa sunt suscipit excepturi ut consequatur accusamus et doloremque illum aliquid quod dignissimos, accusantium nulla? At quam eum quidem? Sit quidem molestias ducimus commodi. Cupiditate, perspiciatis! Deserunt laboriosam illum id quis labore quam qui architecto provident expedita autem nisi magni eos, ea nostrum facere repudiandae numquam.
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+
+
+  <script>
+    const ctx = document.getElementById('nutritionalChart').getContext('2d');
+    const nutritionalData = {
+      labels: ['Carbs (g)', 'Protein (g)', 'Fat (g)'],
+      datasets: [{
+        data: [{{dishInfo.totalCarbs}}, {{dishInfo.totalProtein}}, {{dishInfo.totalFat}}],
+        backgroundColor: ['#36A2EB', '#FF6384', '#FFCE56'],
+      }]
+    };
+    const nutritionalChart = new Chart(ctx, {
+      type: 'doughnut',
+      data: nutritionalData,
+    });
+  </script>
+
+</body>
+</html>

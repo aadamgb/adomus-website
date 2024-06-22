@@ -14,20 +14,19 @@
     <div id="loading-screen" >
         <div class="spinner"></div>
     </div>
-
+    <nav id="nav" class="myNav" >
+        <div class="container">
+            <img src="/assets/LogoV2.svg" class="logo" alt="logo">
+            <ul class="nav-links">
+                <li><a href="./calendar">Calendar</a></li>
+                <li><a href="#experience">Dashboard</a></li>
+                <li><a href="#projects">Profile</a></li>
+                <li><a href="/auth/logout">Log Out</a></li>
+            </ul>
+        </div>
+    </nav>
     <!-- Main Content -->
-    <div id="main-content" >
-        <nav id="nav" class="myNavv" >
-            <div class="container">
-                <img src="/assets/LogoV2.svg" class="logo" alt="logo">
-                <ul class="nav-links">
-                    <li><a href="./calendar">Calendar</a></li>
-                    <li><a href="#experience">Dashboard</a></li>
-                    <li><a href="#projects">Profile</a></li>
-                    <li><a href="/auth/logout">Log Out</a></li>
-                </ul>
-            </div>
-        </nav>
+
 
         <div class="day-container">
             <h1>Hello {{user.username}}!! Choose your food for the </h1> 
@@ -35,7 +34,9 @@
             <h1 >{{days.orderDay}} of {{days.orderMonth}}</h1>
         </div>
 
-        <div id="sbmt-orderDate" style="display: none;">{{days.orderDate}}</div>
+        <div id="sbmt-orderDate" style="display: none;">
+            {{days.orderDate}}
+        </div>
 
         <div class="first-dish">
             <div class="header-top header-top1"><h4>Breakfast</h4></div>
@@ -56,8 +57,8 @@
                                         <input type="hidden" name="UnitPrice" value={{this.UnitPrice}}>
                                         <input type="hidden" name="CategoryID" value={{this.CategoryID}}>
                                         <input type="hidden" name="ProductImage" value={{this.ProductImage}}>
-                                        <button type="submit" class="button details" formaction="/auth/details">Details <i class="zmdi zmdi-eye"></i></button>
-                                        <button type="submit" class="button" >Add <i class="zmdi zmdi-shopping-cart"></i></button> 
+                                        <a href="/browse">Details</a>
+                                        <button type="submit" class="button" >Add</button> 
                                     </form>
 
                             </div>
@@ -217,13 +218,12 @@
             </div>
         </section>
 
-        <div  class="checkout">
+        <div  class="checkoutt">
             <div class="spacer">
                 <div class="spacer-txt">
                     <h1>Checkout</h1>
                 </div>
             </div>
-
             <div class="checkout-container">
                 <div class="items-container">
                     <div class="bld-container">
@@ -336,24 +336,26 @@
                                 {{/if}}
                             </div>
                         </div>
-
                     </div>
                     <div class="save-btn-container">
 
-                        <form action="/auth/addOrder" method="POST">
-                            <input type="hidden" name="userID" value={{user.id}}>
-                            <input type="hidden" name="orderDate" value={{days.orderDate}}>
-                            <button type="submit" class="save-btn">Save Order</button>
-                        </form>
-        {{#if message}}
-            {{message}}
-        {{/if}}
+                    <form action="/auth/addOrder" method="POST">
+                        <input type="hidden" name="userID" value={{user.id}}>
+                        <input type="hidden" name="orderDate" value={{days.orderDate}}>
+                        <button type="submit" class="save-btn">Save Order</button>
+                    </form>
+                    {{#if message}}
+                        {{message}}
+                    {{/if}}
                     </div>
                 </div>
             </div>
         </div>
 
-    </div>
+
+
+   
+
 
 
   
